@@ -1,0 +1,18 @@
+{
+  "name": "untangle-everything",
+  "owner": {
+    "name": "fictormarcel2"
+  },
+  "metadata": {
+    "description": "Agent skills for untangling AI-built codebases"
+  },
+  "plugins": [
+    {
+      "name": "untangle",
+      "description": "Audit, triage, refactor and guard a codebase that AI built, with a human approving every decision.",
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/untangle"]
+    }
+  ]
+}
