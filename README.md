@@ -1,10 +1,19 @@
-# Untangle
+# Untangle: clean up AI-generated code
 
-An agent skill that cleans up codebases AI built, without letting the AI make the decisions.
+An agent skill for Claude Code, Cursor and Codex that audits and refactors a codebase AI built, without letting the AI make the decisions.
 
 You shipped fast with a coding agent. Months later the repo has three ways to authenticate, tests that pass no matter what, files called `service_v2_final.ts`, and nobody who can explain why half of it exists. The code is rarely the real problem. The problem is forty decisions that were never made.
 
 `untangle` walks an agent through making those decisions with you, one at a time, and leaves behind a codebase that agents can keep working in safely.
+
+## When to use it
+
+- You need to clean up a vibe-coded app or an AI-generated codebase before building more on it.
+- You inherited AI-written code and want a code audit before you trust it.
+- The repo has duplicate code, dead code and several patterns for the same job.
+- The tests are green but nobody believes them.
+- Every fix breaks something unrelated, and the technical debt keeps growing.
+- You want coding agents to stop making the mess worse.
 
 ## What it does
 
