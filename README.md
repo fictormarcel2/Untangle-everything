@@ -22,13 +22,13 @@ You can stop after any phase. The audit alone is useful.
 With the [skills CLI](https://github.com/vercel-labs/skills) (Claude Code, Cursor, Codex and others):
 
 ```bash
-npx skills add fictormarcel2/Untangle-everything
+npx skills add fictormarcel2/untangle-everything
 ```
 
 As a Claude Code plugin:
 
 ```
-/plugin marketplace add fictormarcel2/Untangle-everything
+/plugin marketplace add fictormarcel2/untangle-everything
 /plugin install untangle@untangle-everything
 ```
 
