@@ -63,7 +63,7 @@ Work on a branch named `untangle/<topic>`. Never push. For each approved slice:
 
 1. **Net.** Tests cover the behaviour this slice touches, and you have watched them fail under a deliberate break. If they do not, write characterization tests first: pin what the code does today, bugs included. Log each bug as a new finding instead of fixing it silently.
 2. **Change** one concern.
-3. **Verify** with the full baseline commands. Read the totals, not just the exit code: skipped, cancelled or errored tests count as red, and the test count must not fall below the baseline. If the slice changes what a user sees (pages, routes, redirects), run the app and check those paths. On red, fix the change or revert the slice.
+3. **Verify** with the full baseline commands. Read the totals, not just the exit code: skipped, cancelled or errored tests count as red, and the test count must not fall below the baseline. On red, fix the change or revert the slice.
 4. **Commit** with the finding IDs, update the ledger, and continue to the next slice without asking.
 
 Stop and ask when a slice needs a decision the ledger does not hold.
