@@ -39,6 +39,7 @@ Usual decision: pick a winner, migrate call sites, delete the rest, record an AD
 | Tests the mock | The unit under test is itself mocked; assertions only on call counts or arguments |
 | Mirrors the implementation | Expected value computed by the same formula as the code |
 | Switched off | `skip`, `xfail`, `.only`, `xit`, `t.Skip`, commented-out test bodies |
+| Silently skipped | Tests cancelled or skipped when a service (database, network) is missing, while the runner still reports zero failures |
 | Bent to pass | Git history where the assertion changed in the same commit as the code it guards |
 | Test branches in production code | `if TESTING`, `NODE_ENV === 'test'`, `isTest` flags |
 | Snapshot of everything | Large snapshots that get regenerated on every failure |

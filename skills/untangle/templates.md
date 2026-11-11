@@ -29,6 +29,11 @@ Updated: <YYYY-MM-DD>
 | src/reports/ | mapped | |
 | infra/ | not opened | |
 
+## Test the tests
+
+| Rule broken on purpose | File | Caught? | Test that caught it |
+|---|---|---|---|
+
 ## Scorecard
 
 | # | Check | Before | After | Evidence |
@@ -60,7 +65,7 @@ Updated: <YYYY-MM-DD>
 
 ## Scorecard
 
-Score each check pass, fail, or `n/v` (not verifiable from the repo, with the question to ask). Which checks fail matters more than the count.
+Score each check pass, fail, `n/v` (not verifiable from the repo, with the question to ask), or `out of scope` (when the work was narrowed to one area). Which checks fail matters more than the count.
 
 | # | Check | Passes when |
 |---|---|---|

@@ -26,6 +26,26 @@ You shipped fast with a coding agent. Months later the repo has three ways to au
 
 You can stop after any phase. The audit alone is useful.
 
+## A real run
+
+Task: "delete the old `/client` and `/agency` dashboards, the new portal replaced them" in a client portal for a social media agency. It sounded like a deletion. The audit found it was not:
+
+- The old `/agency` API let any staff member, including an editor assigned to one brand, read and change every client, with no audit log.
+- The old `/client` pages showed hardcoded sample files to real clients, and their chat was stored only in the browser.
+- Creating a brand and managing staff existed **only** in the pages being deleted. Deleting first would have kept the build and tests green and quietly broken client onboarding.
+- Breaking three business rules on purpose showed that one access gate had no test at all.
+
+The human approved one triage table; the agent moved the missing features first, then deleted, in six slices with one commit each.
+
+| Measure | Before | After |
+|---|---|---|
+| Handwritten lines | | −3,737 / +370 |
+| Main JS bundle | 619.7 kB | 500.8 kB |
+| API tests | 29 | 32 |
+| Broken business rules caught by tests | 2 of 3 | 4 of 4 |
+| Authorization paths | 2 | 1, locked by a test that fails on any new ungated route |
+| Legacy API endpoints | 18 | 0 |
+
 ## Install
 
 With the [skills CLI](https://github.com/vercel-labs/skills) (Claude Code, Cursor, Codex and others):

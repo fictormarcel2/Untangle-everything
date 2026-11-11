@@ -36,6 +36,8 @@ If the codebase already meets these, say so and stop. Inventing work is a failed
 
 Audit → Triage → Refactor → Sustain, in that order. With no ledger, start at Audit. With a ledger, continue from the phase it records. An argument naming a phase or a path narrows the work. It never skips Audit, because Refactor acts only on approved findings.
 
+**Scale to the scope.** When the work is one area or one change (such as removing an old feature), keep the ledger to Baseline, Test the tests, Findings, Decisions and Slices, and score only the scorecard checks the scope touches; mark the rest `out of scope`, not `n/v`.
+
 ### 1. Audit: read-only
 
 Changes nothing except `UNTANGLE.md`. Start it from the template in `templates.md`.
@@ -51,7 +53,7 @@ Changes nothing except `UNTANGLE.md`. Start it from the template in `templates.m
 
 1. Before listing fixes one by one, look for the single decision that dissolves several findings. Ask what this code would look like if its requirements had been known from the start.
 2. For every concern with competing implementations, recommend a winner and give the reason: most call sites, best tested, matches the framework's convention.
-3. Mark each finding keep, fix or remove. Rank by risk: chance of harm × how much depends on it.
+3. Mark each finding keep, fix or remove. Rank by risk: chance of harm × how much depends on it. Before removing anything that still works because something else "replaced" it, list every capability it has that the replacement lacks. Those move first, in their own slices, and only then is the old code removed.
 4. Order the slices. Safety net first, then removals (cheap, and they shrink everything after them), then consolidation, then restructuring.
 5. Present one table, get approval in one pass, and stop until you have it. Record rejections as `wontfix` with the reason.
 
@@ -61,7 +63,7 @@ Work on a branch named `untangle/<topic>`. Never push. For each approved slice:
 
 1. **Net.** Tests cover the behaviour this slice touches, and you have watched them fail under a deliberate break. If they do not, write characterization tests first: pin what the code does today, bugs included. Log each bug as a new finding instead of fixing it silently.
 2. **Change** one concern.
-3. **Verify** with the full baseline commands. On red, fix the change or revert the slice.
+3. **Verify** with the full baseline commands. Read the totals, not just the exit code: skipped, cancelled or errored tests count as red, and the test count must not fall below the baseline. If the slice changes what a user sees (pages, routes, redirects), run the app and check those paths. On red, fix the change or revert the slice.
 4. **Commit** with the finding IDs, update the ledger, and continue to the next slice without asking.
 
 Stop and ask when a slice needs a decision the ledger does not hold.
@@ -89,3 +91,5 @@ Stop and ask when a slice needs a decision the ledger does not hold.
 | "I've covered the codebase" | Coverage is what the ledger says you read. |
 | "Context is getting long, I'll wrap up fast" | Write the ledger, say what remains, stop. |
 | "The suite passes, so it works" | A pass proves only what audit step 4 showed the tests can catch. |
+| "The runner says 0 failed" | Count skipped and cancelled tests. A stopped database can turn half the suite into silent skips. |
+| "The new version replaced it, just delete the old one" | List what only the old one can do. Move that first. |
